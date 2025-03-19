@@ -1,12 +1,13 @@
 const express=require("express")
 const router=express.Router()
-const ControllerUsers=require("../Controller/ControllerUser")
+
+const userController=require("../Controller/ControllerUsers")
+
+router.get("/",userController.getAllUsers);
+router.get("/:id",userController.getUserById)
+router.post("/",userController.createNewUser)
+router.delete("/",userController.deleteUser)
+router.put("/",userController.updateUser)
 
 
-router.get("/",ControllerUsers.getAllUsers)
-router.get("/:id", ControllerUsers.getUsersById)
-router.post("/", ControllerUsers.createNewUser)
-router.delete("/",ControllerUsers.deleteUser)
-router.put("/",ControllerUsers.updateUsers)
-
-module.exports = router
+module.exports=router

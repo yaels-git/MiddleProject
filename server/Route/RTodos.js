@@ -1,12 +1,15 @@
 const express=require("express")
 const router=express.Router()
-const ControllerTodos=require("../Controller/ControllerTodos")
+
+const todoController=require("../Controller/ControllerTodos")
+
+router.get("/",todoController.getAllTodos);
+router.get("/:id",todoController.getTodoById)
+router.post("/",todoController.createNewTodo)
+router.delete("/",todoController.deleteTodo)
+router.put("/",todoController.updateTodo)
+router.put("/complete/:id",todoController.updateTodoComplete)
 
 
-router.get("/",ControllerTodos.getAllTodos)
-router.get("/:id", ControllerTodos.getTodossById)
-router.post("/", ControllerTodos.createNewTodo)
-router.delete("/",ControllerTodos.deleteTodos)
-router.put("/",ControllerTodos.updateTodos)
-router.put("/complete/:id",ControllerTodos.updateTodos)
-module.exports = router
+
+module.exports=router

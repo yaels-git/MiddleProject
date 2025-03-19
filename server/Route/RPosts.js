@@ -1,10 +1,13 @@
 const express=require("express")
 const router=express.Router()
-const Controllerpost=require("../Controller/ControllerPost")
-router.get("/",Controllerpost.getAllPosts)
-router.get("/:id", Controllerpost.getPostsById)
-router.post("/", Controllerpost.createNewPost)
-router.delete("/",Controllerpost.deletepost)
-router.put("/",Controllerpost.updateposts)
 
-module.exports = router
+const postController=require("../Controller/ControllerPosts")
+
+router.get("/",postController.getAllPosts);
+router.get("/:id",postController.getPostById)
+router.post("/",postController.createNewPost)
+router.delete("/",postController.deletePost)
+router.put("/",postController.updatePost)
+
+
+module.exports=router
