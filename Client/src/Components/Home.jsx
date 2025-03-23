@@ -31,24 +31,24 @@ const NAVIGATION = [
 ];
 
 
-// function useDemoRouter(link) {
-//     const [pathname, setPathname] = React.useState(link);
+function useDemoRouter(link) {
+    const [pathname, setPathname] = React.useState(link);
 
-//     const router = React.useMemo(() => {
-//         return {
-//             searchParams: new URLSearchParams(),
-//             navigate: (path) => setPathname(String(path)),
-//         };
-//     }, [pathname]);
+    const router = React.useMemo(() => {
+        return {
+            searchParams: new URLSearchParams(),
+            navigate: (path) => setPathname(String(path)),
+        };
+    }, [pathname]);
 
-//     return router;
-// }
+    return router;
+}
 
 
 
 const Home = () => {
-//    useDemoRouter('/');
-
+   useDemoRouter('/');
+// 
     return (
         <div>
             <AppProvider

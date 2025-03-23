@@ -6,7 +6,7 @@ const userController=require("../Controller/ControllerUsers")
 router.get("/",userController.getAllUsers);
 router.get("/:id",userController.getUserById)
 router.post("/",userController.createNewUser)
-router.delete("/",userController.deleteUser)
+router.delete("/:id",userController.deleteUser)
 router.put("/",userController.updateUser)
 
 

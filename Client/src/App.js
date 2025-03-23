@@ -6,14 +6,16 @@ import Home from "./Components/Home"
 import PostGet from './Components/Posts/PostGet'
 import AllUsers from './Components/Users/UsersGet'
 import TodoGet from './Components/Todos/TodosGet'
+import UsersAdd from'./Components/Users/UsersAdd'
 import { BrowserRouter as Router , Link, Route, Routes } from 'react-router-dom'
+
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path='/' element={<Home/>} >
           <Route path='/Posts' element={<PostGet/>} />
-          <Route path='/Users' element={<AllUsers/>} />
+          <Route path='/Users' element={<AllUsers/>}/>
           <Route path='/Todos' element={<TodoGet/>} />
        </Route> 
         </Routes>

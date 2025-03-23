@@ -9,18 +9,19 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
-import IconButton from 'path/to/IconButton';
-import DeleteUser from 'path/to/DeleteUser';
-import UpdateUser from 'path/to/UpdateUser';
-import DeleteIcon from 'path/to/DeleteIcon';
+import UpdateIcon from '@mui/icons-material/Update';
+import UserAdd from './UsersAdd'
+import axios from 'axios'
+
 
 const AllUsers = ()=>{
 
     const [users,setUsers] = useState([])
 
     const getallusers = async (data)=>{
-        const all = await axios.get('http://localhost:1100/api/users/') 
-        setUsers(all)
+        const all = await axios.get('http://localhost:1100/api/users') 
+        console.log();
+        setUsers(all.data)
     }
     useEffect(()=>{
         getallusers()
@@ -28,11 +29,12 @@ const AllUsers = ()=>{
    
 
       return (
+        <>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
             <TableHead>
               <TableRow>
-                <TableCell>User name</TableCell>
+                {/* <TableCell>User name</TableCell> */}
                 <TableCell align="center">Name</TableCell>
                 <TableCell align="center">Address</TableCell>
                 <TableCell align="center">Email</TableCell>
@@ -44,29 +46,31 @@ const AllUsers = ()=>{
             <TableBody>
               {users.map((item) => (
                 <TableRow
-                  key={item.username}
+                  key={item.userSchema}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
-                  <TableCell component="th" scope="row">
-                    {item.username}
-                  </TableCell>
-                  <TableCell align="right">{item.name}</TableCell>
-                  <TableCell align="right">{item.address}</TableCell>
-                  <TableCell align="right">{item.email}</TableCell>
-                  <TableCell align="right">{item.phone}</TableCell>
-                  <TableCell align="right">
-                  <IconButton aria-label="delete" color="secondary" size="large" onClick={() => <DeleteUser/>}>
+                  {/* <TableCell component="th" scope="row">
+                    {item.userSchema}
+                  </TableCell> */}
+                  <TableCell align="center">{item.name}</TableCell>
+                  <TableCell align="center">{item.address}</TableCell>
+                  <TableCell align="center">{item.email}</TableCell>
+                  <TableCell align="center">{item.phone}</TableCell>
+                  <TableCell align="center">
+                  <IconButton aria-label="delete" color="secondary" size="large" onClick={async () => { await axios.delete(`http://localhost:1100/api/users/${item._id}`); await getallusers() }}>
                     <DeleteIcon />
                   </IconButton></TableCell>
-                  <TableCell align="right">
-                  <IconButton aria-label="delete" color="secondary" size="large" onClick={() => <UpdateUser/>}>
-                    <DeleteIcon />
+                  <TableCell align="center">
+                  <IconButton aria-label="delete" color="secondary" size="large" onClick={() => <userupdate/>}>
+                    <UpdateIcon />
                   </IconButton></TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
+        <UserAdd func={getallusers}></UserAdd>
+        </>
       );
     }
 

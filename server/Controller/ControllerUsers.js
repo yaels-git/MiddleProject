@@ -37,7 +37,8 @@ const updateUser=async(req,res)=>{
 }
  
 const deleteUser=async(req,res)=>{
-    const{id}=req.body
+    const{id}=req.params
+    console.log(id);
     const user=await Users.findById(id).exec()
     if(!user)
         return res.status(400).json({message:'User not found'})
