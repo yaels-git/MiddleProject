@@ -6,7 +6,7 @@ const postController=require("../Controller/ControllerPosts")
 router.get("/",postController.getAllPosts);
 router.get("/:id",postController.getPostById)
 router.post("/",postController.createNewPost)
-router.delete("/",postController.deletePost)
+router.delete("/:id",postController.deletePost)
 router.put("/",postController.updatePost)
 
 

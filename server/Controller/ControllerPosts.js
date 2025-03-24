@@ -11,7 +11,7 @@ const createNewPost=async(req,res)=>{
         return res.status(400).json({message:'invalid post'})
     }
 }
-const getAllPosts=async(req,res)=>{
+const getAllPosts=async(req,res)=>{;
     const posts=await Posts.find().lean()
     if(!posts?.length){
         return res.status(400).json({message:'No posts found'})
@@ -35,7 +35,7 @@ const updatePost=async(req,res)=>{
 }
  
 const deletePost=async(req,res)=>{
-    const{id}=req.body
+    const{id}=req.params
     const post=await Posts.findById(id).exec()
     if(!post)
         return res.status(400).json({message:'Post not found'})

@@ -82,13 +82,10 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import  { useState,useEffect } from 'react';
-import DeleteIcon from '@mui/icons-material/Delete';
-import UpdateIcon from '@mui/icons-material/Update';
-
+import Postupdate from './postUpdate';
+import PostAdd from './postAdd'
 import IconButton from '@mui/material/IconButton';
-import { Grid2 } from '@mui/material';
-import Fab from '@mui/material/Fab';
-import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 //import Posts from '../../../src/Components/Posts';
@@ -107,6 +104,7 @@ import EditIcon from '@mui/icons-material/Edit';
     
        
   return (<>
+  <PostAdd func={getallpost}></PostAdd>
     {posts.map((item) => {
      
     
@@ -131,16 +129,21 @@ import EditIcon from '@mui/icons-material/Edit';
         </Typography>
       </CardContent>
       <CardActions>
-      <Button size="small">delete</Button>
-        <Button size="small">update</Button>
+      {/* <Button size="small" onClick={async () => { await axios.delete(`http://localhost:1100/api/posts/${item._id}`); await getallpost() }}>delete </Button> */}
+      <IconButton size="small" onClick={async () => { await axios.delete(`http://localhost:1100/api/posts/${item._id}`); await getallpost() }}>
+                    <DeleteIcon />
+                  </IconButton>
       {/* <Fab color="secondary" aria-label="edit">
         <EditIcon />
       </Fab> */}
-      
+      <Postupdate item={item}func={getallpost}></Postupdate>
       </CardActions>
     </Card>
     <br></br>
+    
     </div>
+
+    
   })}
     </>
   );

@@ -9,7 +9,7 @@ import TextField from '@mui/material/TextField';
 import axios from 'axios'
 import { IconButton } from '@mui/material';
 import UpdateIcon from '@mui/icons-material/Update';
-const Userupdate = (props) => {
+const Postupdate = (props) => {
   const [open, setOpen] = React.useState(false);
 
 
@@ -42,16 +42,13 @@ const Userupdate = (props) => {
               const formJson = Object.fromEntries(formData.entries());
               console.log(formJson);
 
-              const user = {
-                name: formJson.name,
-                username: formJson.username,
-                email: formJson.email,
-                address: formJson.address,
-                phone: formJson.phone,
+              const post = {
+                title: formJson.title,
+                body: formJson.body,
                 _id:props.item._id
               }
-              console.log(user);
-               await axios.put('http://localhost:1100/api/users', user)
+              console.log(post);
+               await axios.put('http://localhost:1100/api/posts', post)
               props.func()
               handleClose();
             },
@@ -67,59 +64,22 @@ const Userupdate = (props) => {
               autoFocus
               required
               margin="dense"
-              id="name"
-              name="name"
-              label="name"
+              id="title"
+              name="title"
+              label="title"
               type="string"
               fullWidth
-              defaultValue={props.item.name}
+              defaultValue={props.item.title}
               variant="standard"
             /><TextField
               autoFocus
               required
               margin="dense"
-              id="username"
-              name="username"
-              label="username"
+              id="body"
+              name="body"
+              label="body"
               type="string"
-              defaultValue={props.item.username}
-
-              fullWidth
-              variant="standard"
-            /><TextField
-              autoFocus
-              required
-              margin="dense"
-              id="email"
-              name="email"
-              label="Email Address"
-              type="email"
-              defaultValue={props.item.email}
-
-              fullWidth
-              variant="standard"
-            /><TextField
-              autoFocus
-              required
-              margin="dense"
-              id="address"
-              name="address"
-              label=" Address"
-              type="string"
-              defaultValue={props.item.address}
-
-              fullWidth
-              variant="standard"
-            />
-            <TextField
-              autoFocus
-              required
-              margin="dense"
-              id="phone"
-              name="phone"
-              label="phone"
-              type="namber"
-              defaultValue={props.item.phone}
+              defaultValue={props.item.body}
 
               fullWidth
               variant="standard"
@@ -135,4 +95,4 @@ const Userupdate = (props) => {
     </React.Fragment>
   );
 }
-export default Userupdate
+export default Postupdate

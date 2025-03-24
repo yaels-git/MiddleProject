@@ -22,7 +22,7 @@ export default function AlertDialog(props) {
   return (
     <React.Fragment>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Add User
+        Add posts
       </Button>
       <Dialog
         open={open}
@@ -36,16 +36,14 @@ export default function AlertDialog(props) {
                 event.preventDefault();
                 const formData = new FormData(event.currentTarget);
                 const formJson = Object.fromEntries(formData.entries());
-                const user={
-                    name:  formJson.name,
-                    username:formJson.username,
-                    email:formJson.email,
-                    address:formJson.address,
-                    phone :formJson.phone
+                const post={
+                    title:  formJson.title,
+                    body:formJson.body,
+                  
 
                 }
-                console.log(user);
-                await axios.post('http://localhost:1100/api/users',user) 
+                console.log(post);
+                await axios.post('http://localhost:1100/api/posts',post) 
                 props.func()
                 handleClose();
               },
@@ -61,9 +59,9 @@ export default function AlertDialog(props) {
               autoFocus
               required
               margin="dense"
-              id="name"
-              name="name"
-              label="name"
+              id="title"
+              name="title"
+              label="title"
               type="string"
               fullWidth
               variant="standard"
@@ -71,44 +69,13 @@ export default function AlertDialog(props) {
             autoFocus
             required
             margin="dense"
-            id="username"
-            name="username"
-            label="username"
+            id="body"
+            name="body"
+            label="body"
             type="string"
             fullWidth
             variant="standard"
-          /><TextField
-          autoFocus
-        
-          margin="dense"
-          id="email"
-          name="email"
-          label="Email Address"
-          type="email"
-          fullWidth
-          variant="standard"
-        /><TextField
-        autoFocus
-        required
-        margin="dense"
-        id="address"
-        name="address"
-        label=" Address"
-        type="string"
-        fullWidth
-        variant="standard"
-      />
-      <TextField
-          autoFocus
-          required
-          margin="dense"
-          id="phone"
-          name="phone"
-          label="phone"
-          type="namber"
-          fullWidth
-          variant="standard"
-        />
+          />
           </DialogContentText>
         </DialogContent>
         <DialogActions>

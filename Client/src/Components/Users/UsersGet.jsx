@@ -12,6 +12,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import UpdateIcon from '@mui/icons-material/Update';
 import UserAdd from './UsersAdd'
 import axios from 'axios'
+import Userupdate from "./userupdate";
 
 
 const AllUsers = ()=>{
@@ -61,14 +62,14 @@ const AllUsers = ()=>{
                     <DeleteIcon />
                   </IconButton></TableCell>
                   <TableCell align="center">
-                  <IconButton aria-label="delete" color="secondary" size="large" onClick={() => <userupdate/>}>
-                    <UpdateIcon />
-                  </IconButton></TableCell>
+                  <Userupdate  item={item} func={getallusers}/>
+                 </TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
+     
         <UserAdd func={getallusers}></UserAdd>
         </>
       );
