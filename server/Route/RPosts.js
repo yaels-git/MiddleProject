@@ -1,7 +1,7 @@
 const express=require("express")
 const router=express.Router()
 
-const postController=require("../Controller/ControllerPosts")
+const postController=require("../controller/ControllerPosts")
 
 router.get("/",postController.getAllPosts);
 router.get("/:id",postController.getPostById)

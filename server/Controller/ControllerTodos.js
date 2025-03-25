@@ -1,5 +1,6 @@
 const Todos=require("../modules/Todos")
 const createNewTodo=async(req,res)=>{
+    console.log("ddddddddddd");
     const{title,tags}=req.body
     if(!title){
         return res.status(400).json({message:'name is required'})
@@ -13,13 +14,13 @@ const createNewTodo=async(req,res)=>{
 }
 const getAllTodos=async(req,res)=>{
     const todos=await Todos.find().lean()
-    if(!todos?.length){
-        return res.status(400).json({message:'No todos found'})
-    }
+    // if(!todos?.length){
+    //     return res.status(400).json({message:'No todos found'})
+    // }
     res.json(todos)
 }
 const updateTodo=async(req,res)=>{
-    const{title,tags}=req.body
+    const{_id,title,tags}=req.body
     if(!title){
         return res.status(400).json({message:'name is required'})
     }
@@ -30,11 +31,11 @@ const updateTodo=async(req,res)=>{
         todo.title=title
         todo.tags=tags
         const updateTodo=await todo.save()
-        res.json(`'${updateTodo.name}' updated`)
+        res.json(`'${updateTodo.title}' updated`)
 }
  
 const deleteTodo=async(req,res)=>{
-    const{id}=req.body
+    const{id}=req.params
     const todo=await Todos.findById(id).exec()
     if(!todo)
         return res.status(400).json({message:'Todo not found'})

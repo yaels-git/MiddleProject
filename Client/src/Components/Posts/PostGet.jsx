@@ -103,8 +103,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
         },[])
     
        
-  return (<>
-  <PostAdd func={getallpost}></PostAdd>
+  return (<><PostAdd func={getallpost}></PostAdd>
+  
     {posts.map((item) => {
      
     

@@ -13,9 +13,9 @@ const createNewUser=async(req,res)=>{
 }
 const getAllUsers=async(req,res)=>{
     const users=await Users.find().lean()
-    if(!users?.length){
-        return res.status(400).json({message:'No users found'})
-    }
+    // if(!users?.length){
+    //     return res.status(400).json({message:'No users found'})
+    // }
     res.json(users)
 }
 const updateUser=async(req,res)=>{

@@ -1,7 +1,7 @@
 const express=require("express")
 const router=express.Router()
 
-const userController=require("../Controller/ControllerUsers")
+const userController=require("../controller/ControllerUsers")
 
 router.get("/",userController.getAllUsers);
 router.get("/:id",userController.getUserById)

@@ -13,9 +13,9 @@ const createNewPost=async(req,res)=>{
 }
 const getAllPosts=async(req,res)=>{;
     const posts=await Posts.find().lean()
-    if(!posts?.length){
-        return res.status(400).json({message:'No posts found'})
-    }
+    // if(!posts?.length){
+    //     return res.status(400).json({message:'No posts found'})
+    // }
     res.json(posts)
 }
 const updatePost=async(req,res)=>{

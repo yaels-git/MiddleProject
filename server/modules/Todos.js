@@ -7,6 +7,7 @@ const TodosSchema=new mongoos.Schema({
     tags:{
         type:[String]
     },
+    type:String,
     completed:{
         type:Boolean,
         default:false
